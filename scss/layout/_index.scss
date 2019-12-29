@@ -1,0 +1,546 @@
+// @source http://smacss.com/book/type-layout
+//
+// Layout Rules
+//
+// Layout styles can also be divided into major and minor styles based on
+// reuse. Major layout styles such as header and footer are traditionally
+// styled using ID selectors but take the time to think about the elements
+// that are common across all components of the page and use class selectors
+// where appropriate.
+
+//Sections
+@import "compass/css3";
+
+@include font-face("Walkway-Bold", font-files("../fonts/Walkway-Bold.ttf"));
+
+html,body
+{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+@font-face {
+    font-family: 'walkway_boldregular';
+    src: url('../fonts/walkway_bold-webfont.woff2') format('woff2'),
+         url('../fonts/walkway_bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@mixin h2-main-style($color: #3f51b5, $fsize: 2.5em){
+  font-size: $fsize;
+  font-family: $prim-font, sans-serif;
+  color: $color;
+  text-transform: uppercase;
+}
+
+@mixin back-font-color($bcolor : $Indigo-500, $f-color: white){
+  background-color: $bcolor;
+  color: $f-color;
+}
+@mixin font-color($Fcolor : $Indigo-500){
+  text-decoration: none;
+  color: $Fcolor;
+}
+
+@mixin back-size(){
+  @include background-size(200%);
+  @media (min-width: 544px) {
+     @include background-size(160%);
+   }
+  @media (min-width: 768px) {
+    @include background-size(110%);
+   }
+}
+
+@mixin p-responsive($Fs:1.5em, $p:2em 1em 8em){
+  @media (min-width: 1200px) {
+    font-size: $Fs;
+     padding: $p;
+   }
+}
+
+
+*{
+  box-sizing: border-box;
+}
+$prim-font  :  walkway_boldregular;
+
+body  {
+    font-family: $prim-font;
+    text-align: center;
+}
+
+#home{
+  height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: #1a237e url("../img/background.png") repeat-x left bottom;
+  @include back-size();
+    h1{
+      font-size: 6em;
+      color: rgba(255, 255, 255, 0.929);
+      line-height: 1.2;
+      font-family: $prim-font, sans-serif;
+      padding: 0;
+      margin: 0;
+      @media (min-width: 1200px) {
+        font-size: 6em;
+        margin-top: 0em;
+       }
+       @media (min-width: 1800px) {
+         font-size: 7.5em;
+         margin-top: 0.5em;
+        }
+    }
+
+    h2 {
+      color: rgba(255, 255, 255, 0.929);
+      line-height: 1.2;
+      font-family: $prim-font, sans-serif;
+      font-size: 0.8em;
+      text-transform: uppercase;
+      padding: 0;
+      margin: 0;
+      @media (min-width: 1200px) {
+        font-size: 1.2em;
+       }
+    }
+}
+
+$size-moon      :      200px;
+.moon{
+  @include border-radius(50%, 50%);
+  background-color: rgba(121, 134, 203, 0.14);
+  display: block;
+  width: $size-moon;
+  height: $size-moon;
+  position: absolute;
+  top:-30px;
+  left:-30px;
+}
+
+.moon-inner1{
+  @include border-radius(50%, 50%);
+  background-color: rgba(159, 168, 218, 0.24);
+  width: $size-moon/1.5;
+  height: $size-moon/1.5;
+  margin: auto;
+  position: absolute;
+  top:30px;
+  left:30px;
+}
+
+.moon-inner2{
+  @include border-radius(50%, 50%);
+  background-color: rgba(197, 202, 233, 0.58);
+  width: $size-moon/2.3;
+  height: $size-moon/2.3;
+  margin: auto;
+  position: absolute;
+  top:22px;
+  left:22px;
+}
+.moon-inner3{
+  @include border-radius(50%, 50%);
+  background-color: rgba(232, 234, 246, 0.81);
+  width: $size-moon/3.8;
+  height: $size-moon/3.8;
+  margin: auto;
+  position: absolute;
+  top:17px;
+  left:17px;
+}
+
+
+
+.logo {
+  width: 200px;
+  height: 250px;
+  //background: url("../img/logo.svg") no-repeat center;
+  margin: 0 auto;
+  @media (min-width: 1200px) {
+    width: 200px;
+
+   }
+   @media (min-width: 1800px) {
+     width: 300px;
+     height: 325px;
+    }
+}
+.wrap-home{
+  margin: auto;
+}
+
+
+//********************************************
+//------------QUIENES SOMOS-------------------
+//********************************************
+
+
+#weare{
+  padding: 0;
+  margin: 0;
+ background: $Indigo-50 url("../img/river.png") repeat-x bottom center;
+@include back-size();
+ p{
+   padding: 1.2em 1em 4em;
+   color: $Indigo-900;
+   margin-bottom: 0;
+   @media (min-width: 544px) {
+    padding: 1.2em 1em 6em;
+   }
+   @include p-responsive();
+ }
+}
+
+.head-title{
+  position: relative;
+  h3{
+    font-size: 2.1em;
+    font-family: $prim-font, sans-serif;
+    color: rgb(48, 63, 159);
+    text-transform: uppercase;
+    line-height: 1.2;
+    display: inline-block;
+    margin-bottom: 0;
+    @media (min-width: 1200px) {
+        font-size: 3.1em;
+     }
+  }
+  span{
+    color: rgb(73, 86, 173);
+    @media (min-width: 1200px) {
+        font-size: 1.5em;
+
+     }
+  }
+  :nth-child(2){
+    position: absolute;
+    top: 40px;
+    @media (min-width: 1200px) {
+        top: 60px;
+        }
+  }
+  h2{
+    @include h2-main-style;
+    margin: -10px 0 0;
+    @media (min-width: 1200px) {
+        font-size: 3.6em;
+     }
+  }
+}
+
+
+//********************************************
+//------------QUE HACEMOS---------------------
+//********************************************
+
+
+#wedo{
+  background: $Indigo-500 url("../img/white-field.png") repeat-x bottom center;
+  @include back-size();
+  color: $white;
+  position: relative;
+  h2{
+    @include h2-main-style($color:$white);
+    margin: 0;
+    padding-top: 1em;
+    @media (min-width: 1200px) {
+        font-size: 3.2em;
+        padding-top: 1.5em;
+     }
+  }
+  p{
+    padding: 1.2em 1em 0em;
+       @include p-responsive($p: 3em 1em 1em);
+  }
+}
+
+.v-sep{
+  padding: 2em 0 7em;
+  @media (min-width: 454px) {
+    padding: 2em 0 10em;
+   }
+   @media (min-width: 1200px) {
+     padding: 4em 0 18em;
+    }
+  span{
+    font-size: 1.5em;
+  }
+  :last-child {
+    @include transform(rotate(180deg));
+    display: block;
+    margin-top: -20px;
+  }
+}
+
+
+//********************************************
+//------------PORQUE IMPORTA-------------------
+//********************************************
+
+
+#whyitmatters{
+  background: url("../img/blue-field.png") repeat-x bottom center;
+  @include back-size();
+  h2{
+    @include h2-main-style;
+  }
+  p{
+    padding: 0.4em 1em;
+    color: $Indigo-900;
+    margin: 0 auto;
+    @media (min-width: 544px) {
+     padding: 1.2em 1em 2em;
+    }
+    @include p-responsive($Fs: 1.4em, $p : 0.2em);
+  }
+}
+.glide__wrapper{
+  margin-top: 4em;
+}
+.circle{
+  list-style: none;
+  padding: 0;
+  width: 100%;
+  .circle__slide{
+      display: inline-block;
+      vertical-align: top;
+      width: 300px;
+      margin: 0  1em;
+      p{
+        padding: 0!important;
+        font-size: 1.2rem!important;
+        margin: 1em auto!important;
+      }
+  }
+}
+.round{
+  margin: auto;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  background-color:  #3f51b5;
+  padding: 2em;
+  h2{
+    color : $Indigo-100!important;
+    font-size: 4rem!important;
+    margin-bottom: 1rem!important;
+  }
+  h3{
+    color: $Indigo-A100!important;
+  }
+}
+.tiny-right{
+  font-size: 0.8rem!important;
+  padding: 1em!important;
+  text-align: right;
+}
+.row {
+
+}
+.col-50 {
+  width: 100%;
+  padding: 1em;
+  h3{
+    @include h2-main-style($fsize: 2.2em);
+  }
+    @media (min-width: 1200px) {
+      width: 50%;
+      float: left;
+    }
+}
+
+.vw-sep{
+  padding: 2em 0 6em;
+  @media (min-width: 1200px) {
+    padding: 2em 0 12em;
+  }
+  span{
+    font-size: 1.5em;
+    color: $Indigo-400;
+  }
+  :last-child {
+    @include transform(rotate(180deg));
+    display: block;
+    margin-top: -25px;
+    color: $Indigo-100;
+  }
+}
+
+
+//********************************************
+//-----------------CONTACTO-------------------
+//********************************************
+
+
+#contactus{
+  background: $Indigo-900;
+  height: 100vh;
+  @media (min-width: 600px) {
+      height: 60vh;
+  }
+  @media (min-width: 1200px) {
+      height: 80vh;
+  }
+  @media (min-width: 1600px) {
+      height: 60vh;
+  }
+  padding-top: 2em;
+  h2{
+      @include h2-main-style($color: $white);
+      margin-top: 0;
+  }
+
+  fieldset{
+    border: 0;
+    margin: 0;
+    padding: 0.5em 0;
+  }
+  input, textarea{
+    padding: 0.7em;
+    width: 90%;
+    border: 0;
+    margin-bottom: 0.2em;
+  }
+  textarea{
+  }
+}
+
+button.btn-send{
+  padding: 0.7em;
+  width: 90%;
+  border: 0;
+  margin-bottom: 0.2em;
+  @include back-font-color();
+  text-transform: uppercase;
+  &:hover{
+    @include back-font-color($bcolor:$Indigo-A400);
+  }
+}
+.so-icons{
+  font-size: 1.8em;
+  border: 3px solid $white;
+  color: $Indigo-900;
+  background-color: $Indigo-50;
+  margin-right: 0.7em;
+  padding: 0.3em;
+}
+.fa-facebook{
+  padding: 0.3em 0.45em;
+}
+.fa-linkedin {
+    margin-right: 0;
+}
+.social-icon{
+  width: 100%;
+  padding-top: 2em;
+  text-align: center;
+}
+
+footer{
+  width: 100%;
+  text-align: center;
+  background: $Indigo-900 url("../img/footer-back.png") no-repeat bottom center;
+  @include back-size();
+  min-height: 20vh;
+  @media (min-width: 600px) {
+      height: 40vh;
+  }
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+      h1{
+        @include h2-main-style($color: rgba(255, 255, 255, 0.929), $fsize: 4em);
+        line-height: 1.2;
+        padding: 0;
+        margin: 0;
+      }
+
+      h2 {
+        @include h2-main-style($color: rgba(255, 255, 255, 0.929), $fsize: 0.8em);
+        line-height: 1.2;
+        padding: 0;
+        margin: 0;
+      }
+
+}
+.sr-only{
+  display: none;
+  text-indent: -99999px;
+}
+
+.inner-container{
+  max-width: 1200px;
+  margin: auto;
+}
+
+a{
+  @include font-color();
+  &:hover{
+    @include font-color($Fcolor : $Indigo-A400);
+  }
+}
+
+.hidden{
+     opacity:0;
+}
+.visible{
+     opacity:1;
+}
+.no-js #loader { display: none;  }
+.js #loader { display: block; position: absolute; left: 100px; top: 0; }
+.se-pre-con {
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+	background: url(../img/loading.gif) center no-repeat #fff;
+}
+
+.alert-success {
+    background-color: #4caf50;
+    border-color: #43a047;
+    color: #e8f5e9;
+}
+
+.alert-danger {
+    background-color: #f44336;
+    border-color: #e53935;
+    color: #ffebee;
+}
+.alert {
+    padding: 15px;
+    margin: auto;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    width: 90%;
+}
+
+.close {
+    float: right;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    opacity: .2;
+}
+
+button.close {
+    padding: 0;
+    cursor: pointer;
+    background: 0 0;
+    border: 0;
+    -webkit-appearance: none;
+}
